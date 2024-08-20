@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DummyWebApp.Domain.Entities.VillaNumber>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Index Villa Number</h1>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Villa Number List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="VillaNumber" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle-fill"></i> &nbsp; Add New Villa Number
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+
+<table class="table table-boardered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Villa Name
+            </th>
+            <th>
+                Villa Number
+            </th>
+            <th>
+                SpecialDetails
+            </th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="30%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.Villa.Name
+                </td>
+                <td width="30%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.Villa_Number
+                </td>
+                <td width="15%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.SpecialDetails
+                </td>
+
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="VillaNumber" asp-action="Edit" asp-route-id="@obj.Villa_Number" class="btn btn-primary align-items-center">
+                            <i class="bi bi-pen-fill"></i> &nbsp;  Edit
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="VillaNumber" asp-action="Delete" asp-route-id="@obj.Villa_Number" class="btn btn-danger justify-content-center">
+                            <i class="bi bi-trash2-fill"></i> &nbsp;  Delete
+                        </a>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

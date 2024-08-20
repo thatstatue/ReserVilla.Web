@@ -1,0 +1,136 @@
+﻿@using DummyWebApp.Application.Utility
+@model IEnumerable<Booking>
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    var status = Context.Request.Query["status"];
+
+    var pending = "";
+    var approved = "";
+    var checkedIn = "";
+    var cancelled = "";
+    var refunded = "";
+    var completed = "";
+    var final = "color:#fff ;background-color:var(--bs-dark)";
+
+    switch (status)
+    {
+        case SD.StatusPending:
+            pending = final;
+            break;
+        case SD.StatusApproved:
+            approved = final;
+            break;
+        case SD.StatusRefunded:
+            refunded = final;
+            break;
+        case SD.StatusCompleted:
+            completed = final;
+            break;
+        case SD.StatusCheckedIn:
+            checkedIn = final;
+            break;
+        case SD.StatusCancelled:
+            cancelled = final;
+            break;
+
+    }
+
+}
+<h1>Index Booking</h1>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Booking List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                <i class="bi bi-plus-circle-fill"></i> &nbsp; Add New Booking
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<div class="d-flex justify-content-between pb-4 pt-2">
+    <ul class="list-group list-group-horizontal-sm">
+        <a style="text-decoration:none;@pending" asp-controller="Booking" asp-action="Index" asp-route-status="@SD.StatusPending">
+        <li class="list-group-item" style=@pending> @SD.StatusPending</li>
+        </a>
+        <a style="text-decoration:none;@approved" asp-controller="Booking" asp-action="Index" asp-route-status="@SD.StatusApproved">
+        <li class="list-group-item" style=@approved> @SD.StatusApproved</li>
+        </a>
+        <a style="text-decoration:none;@checkedIn" asp-controller="Booking" asp-action="Index" asp-route-status="@SD.StatusCheckedIn">
+        <li class="list-group-item" style=@checkedIn> @SD.StatusCheckedIn</li>
+        </a>
+        <a style="text-decoration:none;@completed" asp-controller="Booking" asp-action="Index" asp-route-status="@SD.StatusCompleted">
+        <li class="list-group-item" style=@completed> @SD.StatusCompleted</li>
+        </a>
+        <a style="text-decoration:none;@cancelled" asp-controller="Booking" asp-action="Index" asp-route-status="@SD.StatusCancelled">
+        <li class="list-group-item" style=@cancelled> @SD.StatusCancelled</li>
+        </a>
+        <a style="text-decoration:none;@refunded" asp-controller="Booking" asp-action="Index" asp-route-status="@SD.StatusRefunded">
+        <li class="list-group-item" style=@refunded> @SD.StatusRefunded</li>
+        </a>
+    </ul>
+</div>
+<br />
+
+<table class="table table-boardered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Check In Date</th>
+            <th>Nights</th>
+            <th>Total</th>
+
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="5%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.Id
+                </td>
+                <td width="10%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.Name
+                </td>
+                <td width="15%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.Phone
+                </td>
+                <td width="20%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.Email
+                </td>
+                <td width="10%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.Status
+                </td>
+                <td width="15%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.CheckInDate
+                </td>
+                <td width="5%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.Nights
+                </td>
+                <td width="10%" style="vertical-align: middle; padding: 10px 0;">
+                    &nbsp; @obj.TotalCost
+                </td>
+
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Booking" asp-action="BookingDetails" asp-route-bookingId="@obj.Id" class="btn btn-primary align-items-center">
+                            <i class="bi bi-pen-fill"></i> &nbsp;  Details
+                        </a>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

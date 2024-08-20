@@ -1,0 +1,59 @@
+﻿@model DummyWebApp.Domain.Entities.Villa
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="w-100 card border-0 p-4">
+    <div class="card-body border p-4">
+        <form method="post" asp-action="Edit" enctype="multipart/form-data" >
+            <input asp-for="Id" hidden />
+            <div class="row">
+                <div class="col-8 border p-3 mt-4">
+                    <div class="row pb-2">
+                        <h2 class="text-primary"> Edit Villa</h2>
+                        <hr />
+                    </div>
+                    <div asp-validation-summary="All"></div>
+                    <div class="mb-3">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Description"></label>
+                        <input asp-for="Description" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Occupancy"></label>
+                        <input asp-for="Occupancy" class="form-control" />
+                        <span asp-validation-for="Occupancy" class="text-danger" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ImageUrl"></label>
+                        <input asp-for="Image" class="form-control border shadow" />
+                        <input asp-for="ImageUrl" hidden class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Sqft"></label>
+                        <input asp-for="Sqft" class="form-control" />
+                        <span asp-validation-for="Sqft" class="text-danger" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Price"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger" />
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+                    <a asp-controller="Villa" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                        Back to List
+                    </a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-start">
+                    <img src="@Model.ImageUrl" width="100%" style="border-radius:5px" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

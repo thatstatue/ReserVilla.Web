@@ -1,0 +1,45 @@
+﻿@model VillaNumberVM
+@{
+    ViewData["Title"] = "Create";
+}
+<form method="post">
+    <div class="col-8">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary"> Create New Villa Number</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class=" mb-3">
+            <label asp-for="VillaNumber.VillaId"></label>
+            <select asp-for="@Model.VillaNumber.VillaId" asp-items="@Model.VillaList as
+            IEnumerable<SelectListItem>" class="form-select border shadow">
+                <option disabled selected>--Select Villa--</option>
+            </select>
+           
+            <span asp-asp-validation-for="VillaId" class="text-danger" />
+
+        </div>
+        <div class=" mb-3">
+            <label asp-for="VillaNumber.Villa_Number"></label>
+            <input asp-for="VillaNumber.Villa_Number" class="form-control" />
+            <span asp-asp-validation-for="Villa_Number" class="text-danger" />
+
+        </div>
+        <div class=" mb-3">
+            <label asp-for="VillaNumber.SpecialDetails"></label>
+            <input asp-for="VillaNumber.SpecialDetails" class="form-control" />
+        </div>
+       
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-asp-controller="Villa" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+    </div>
+    </div>
+</form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

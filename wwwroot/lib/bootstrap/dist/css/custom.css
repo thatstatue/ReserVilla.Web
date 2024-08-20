@@ -1,0 +1,157 @@
+﻿:root {
+    --bs-primary: #f3acb6; /* Soft Light Pink */
+    --bs-secondary: #9e8189; /* Muted Mauve */
+    --bs-success: #a8d8d8; /* Soft Mint Green */
+    --bs-info: #ffe5d8; /* Soft Pale Peach */
+    --bs-warning: #ffcad4; /* Light Coral Pink */
+    --bs-danger: #9e8189; /* Muted Mauve (same as Secondary) */
+    --bs-light: #faeee6; /* Very Light Warm Cream (same as Success) */
+    --bs-dark: #9e8189; /* Muted Mauve (same as Secondary and Danger) */
+    --bs-body-bg: #faeee6; /* Very Light Warm Cream (same as Success and Light) */
+    --bs-body-color: #343a40; /* Dark Gray */
+    --bs-link-color: #f3acb6; /* Soft Light Pink (same as Primary) */
+    --bs-text-color: #5c2e34; /* Deep Muted Brown */
+    --bs-accent: #4a0d24; /* Deep Plum */
+    --bs-mint: #0ab98a; /* Soft Mint Green */
+    --bs-beige: #f8e8d4; /* Warm Beige */
+    --bs-gold: #d4af37; /* Rich Gold */
+    --bs-charcoal: #4a4a4a; /* Charcoal Gray */
+}
+
+
+.button-accent {
+    background-color: var(--bs-accent);
+    color: #fff;
+}
+
+.card {
+    background-color: var(--bs-beige);
+    border: 1px solid var(--bs-charcoal);
+}
+
+.highlight {
+    color: var(--bs-gold);
+}
+
+.secondary-bg {
+    background-color: var(--bs-mint);
+}
+
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+a {
+    color: var(--bs-link-color);
+}
+
+    a:hover {
+        color: darken(var(--bs-link-color), 10%);
+    }
+
+/* Navbar Styles */
+.navbar {
+    background-color: var(--bs-primary) !important;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+    .nav-link:hover {
+        color: lighten(#fff, 20%) !important;
+    }
+
+/* Button Styles */
+.button {
+    color: var(--bs-text-color);
+}
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #fff;
+    text-decoration-color: #fff;
+
+}
+
+
+    .btn-primary:hover {
+        background-color: darken(var(--bs-primary), 10%);
+        border-color: darken(var(--bs-primary), 10%);
+    }
+
+.btn-secondary {
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-secondary);
+}
+
+    .btn-secondary:hover {
+        background-color: darken(var(--bs-secondary), 10%);
+        border-color: darken(var(--bs-secondary), 10%);
+    }
+
+/* Card Styles */
+.card {
+    border: 1px solid var(--bs-primary);
+}
+
+.card-header {
+    background-color: var(--bs-primary);
+    color: #fff;
+}
+
+.card-body {
+    background-color: var(--bs-light);
+}
+/* Text Primary */
+.text-primary {
+    color: var(--bs-text-color) !important; 
+}
+
+/* Form Styles */
+.form-control {
+    border-color: var(--bs-primary);
+}
+
+    .form-control:focus {
+        border-color: darken(var(--bs-primary), 10%);
+        box-shadow: 0 0 0 0.2rem rgba(243, 172, 182, 0.25);
+    }
+
+/* Table Styles */
+.table {
+    background-color: var(--bs-light);
+}
+
+    .table thead {
+        background-color: var(--bs-primary);
+        color: #fff;
+    }
+
+    .table tbody tr:hover {
+        background-color: lighten(var(--bs-primary), 40%);
+    }
+
+/* Footer Styles */
+.footer .form-control {
+    background-color: var(--bs-body-bg);
+    border-color: var(--bs-primary);
+    color: var(--bs-body-color);
+}
+.footer .form-control:focus {
+    background-color: lighten(var(--bs-body-bg), 5%);
+    border-color: darken(var(--bs-primary), 10%);
+    box-shadow: 0 0 0 0.2rem rgba(243, 172, 182, 0.25)
+}
+.footer {
+    color: #faeee6; /* Light color for good contrast against dark background */
+}
+
+    .footer a {
+        color: #f3acb6; /* Link color */
+    }
+
+        .footer a:hover {
+            color: #ffe5d8; /* Hover color for links */
+        }

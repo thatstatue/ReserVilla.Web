@@ -1,0 +1,127 @@
+﻿@using DummyWebApp.Application.Utility
+@model Booking
+
+<div class="p-4 mt-0 mt-lg-4">
+    <div class="row" style="border: 1px solid #aaa;">
+
+        <div class="col-12 col-lg-6 p-4 2 mt-2 mt-md-0">
+            <div class="row p-1 " style="border-radius:20px; ">
+                <div class="col-6">
+                    <h3>Villa Details</h3>
+                </div>
+                <div class="col-6 text-end ">
+                    <a asp-controller="Booking" asp-action="Index" class="btn btn-secondary my-2 " style="color:white"><i class="bi bi-arrow-left-circle"></i> Back to Bookings</a>
+                </div>
+                <hr />
+                <partial name="_VillaDetails" model="@Model.Villa" />
+                <hr />
+                <div class="text-end">
+                    <h4 class="font-weight-bold ">
+                        Booking Total :
+                        <span style="border-bottom:1px">
+                            @Model.TotalCost.ToString("c")
+                        </span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 p-4 2 mt-4 mt-md-0" style="border-left:1px solid #aaa">
+            <form method="post">
+
+                <div class="row pt-1 mb-3 " style="border-radius:20px; ">
+                    <div class="col-6">
+                        <h3>Enter Booking Details</h3>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" asp-action="Cancel" asp-route-bookingId="@Model.Id" class="btn btn-sm btn-outline-danger form-control my-1">
+                            <i class="bi bi-x-circle">
+
+                        </i> &nbsp; Cancel Booking</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group pt-2 col-6">
+                        <label>Name</label>
+                        <input asp-for="Name" class="form-control" />
+                    </div>
+                    <div class="form-group pt-2 col-6">
+                        <label>Phone</label>
+                        <input asp-for="Phone" class="form-control" />
+                    </div>
+                    <div class="form-group pt-2 col-6">
+                        <label>Email</label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+                    <div class="form-group pt-2 col-6">
+                        <label>Villa Number</label>
+                        <input asp-for="Villa_Number" disabled class="form-control" />
+                    </div>
+
+                    <div class="form-group pt-2 col-6">
+                        <label>No. of nights</label>
+                        <input asp-for="Nights" disabled class="form-control" />
+                    </div>
+                    <div class="form-group pt-2 col-6">
+                        <label>Status</label>
+                        <input asp-for="Status" disabled class="form-control" />
+                    </div>
+                    <div class="form-group pt-2 col-6">
+                        <label>Booking Date</label>
+                        <input asp-for="BookingDate" disabled class="form-control" />
+                    </div>
+                    <div class="form-group pt-2 col-6">
+                        <label>Check-in Date</label>
+                        <input asp-for="CheckInDate" disabled class="form-control" />
+                    </div>
+                    <div class="form-group pt-2 col-6">
+                        <label>Actual Check-in Date</label>
+                        <input asp-for="ActualCheckInDate" disabled class="form-control" />
+                    </div>
+
+
+                    <div class="form-group pt-2 col-6">
+                        <label>Check-out Date</label>
+                        <input asp-for="CheckOutDate" disabled class="form-control" />
+                    </div>
+                    <div class="form-group pt-2 col-6">
+                        <label>Actual Check-out Date</label>
+                        <input asp-for="ActualCheckOutDate" disabled class="form-control" />
+                    </div>
+                    @if (User.IsInRole(SD.Role_Admin))
+                    {
+                        <div class="form-group pt-2 col-6">
+                            <label>Stripe PaymentIntent Id</label>
+                            <input asp-for="StripePaymentIntentId" disabled class="form-control" />
+                        </div>
+                        <div class="form-group pt-2 col-6">
+                            <label>Stripe Session Id</label>
+                            <input asp-for="StripeSessionId" disabled class="form-control" />
+                        </div>
+                        <div class="form-group pt-2 col-6">
+                            <label>Payment Date</label>
+                            <input asp-for="PaymentDate" disabled class="form-control" />
+                        </div>
+                    }
+                </div>
+                <div class="form-group pt-2 pt-md-4">
+                    @if (User.IsInRole(SD.Role_Admin)){
+                        @if (Model.Status == SD.StatusApproved)
+                        {
+                             <button type="submit" asp-action="CheckIn" asp-route-bookingId="@Model.Id" class="btn form-control my-1">
+                                 <i class="bi bi-check2-square"></i>
+                                 &nbsp; Check In
+                            </button>
+                        }
+                        else if (Model.Status == SD.StatusCheckedIn)
+                        {
+                            <button type="submit" asp-action="CheckOut" asp-route-bookingId="@Model.Id" class="btn form-control my-1">
+                            <i class="bi bi-clipboard2-check"></i> 
+                            &nbsp; Check Out / Complete Booking
+                        </button>            
+                        }
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
