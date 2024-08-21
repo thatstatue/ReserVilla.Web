@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DummyWebApp.Application", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DummyWebApp.Domain", "..\DummyWebApp.Models\DummyWebApp.Domain.csproj", "{397C1171-2CC6-4A3C-8F54-D1A9BD10462C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "..\ClassLibrary1\ClassLibrary1.csproj", "{73BFF938-09EC-418F-8260-DFD7B3DBA377}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{397C1171-2CC6-4A3C-8F54-D1A9BD10462C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{397C1171-2CC6-4A3C-8F54-D1A9BD10462C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{397C1171-2CC6-4A3C-8F54-D1A9BD10462C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73BFF938-09EC-418F-8260-DFD7B3DBA377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73BFF938-09EC-418F-8260-DFD7B3DBA377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73BFF938-09EC-418F-8260-DFD7B3DBA377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73BFF938-09EC-418F-8260-DFD7B3DBA377}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
